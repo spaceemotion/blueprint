@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Certificate;
-use App\Http\Requests\CertificateStoreRequest;
-use App\Http\Requests\CertificateUpdateRequest;
-use App\Http\Resources\Certificate as CertificateResource;
-use App\Http\Resources\CertificateCollection;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\CertificateStoreRequest;
+use App\Http\Requests\Api\CertificateUpdateRequest;
+use App\Http\Resources\Api\Certificate as CertificateResource;
+use App\Http\Resources\Api\CertificateCollection;
 use Illuminate\Http\Request;
 
 class CertificateController extends Controller
 {
     /**
      * @param \Illuminate\Http\Request $request
-     * @return \App\Http\Resources\CertificateCollection
+     * @return \App\Http\Resources\Api\CertificateCollection
      */
     public function index(Request $request)
     {
@@ -23,7 +24,7 @@ class CertificateController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\CertificateStoreRequest $request
+     * @param \App\Http\Requests\Api\CertificateStoreRequest $request
      * @return CertificateResource
      */
     public function store(CertificateStoreRequest $request)
@@ -44,7 +45,7 @@ class CertificateController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\CertificateUpdateRequest $request
+     * @param \App\Http\Requests\Api\CertificateUpdateRequest $request
      * @param \App\Certificate $certificate
      * @return CertificateResource
      */
@@ -64,6 +65,6 @@ class CertificateController extends Controller
     {
         $certificate->delete();
 
-        return response()->noContent();
+        return response()->noContent(200);
     }
 }
